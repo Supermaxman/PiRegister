@@ -1,4 +1,4 @@
-from CashRegister import *
+﻿from CashRegister import *
 import sys
 
 class UsageException(Exception):

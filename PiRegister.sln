@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PiRegister", "PiProject\PiRegister.pyproj", "{8BB5A5A2-C0D7-44DF-8D26-82519A435120}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PiRegister", "PiRegister\PiRegister.pyproj", "{8BB5A5A2-C0D7-44DF-8D26-82519A435120}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
