@@ -1,4 +1,4 @@
-from decimal import *
+﻿from decimal import *
 
 class Item(object):
     #Object for individual item data

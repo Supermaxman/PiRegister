@@ -1,4 +1,4 @@
-from enum import Enum
+﻿from enum import Enum
 import os
 
 from Item import *
@@ -18,7 +18,7 @@ class CashRegister(object):
     def __init__(self, filename):
         self.__io = IOManager()
         self.__load_items(filename)
-        self.__take_input()
+        self.__take_input()#change to public function
     @property
     def items(self):
         return self.__items
@@ -73,7 +73,11 @@ class CashRegister(object):
         #process id number from scanner, add to item list
         #go to State.scanning when completed
         #write object interface if required for scanner use
+        
         scan = self.__io.getScan()
+        while scan == 0:
+            scan = self.__io.getScan()
+            #TODO NEXT PART HERE, NEED TO CHECK BUTTON EVERY LOOP
         if scan != 0:
             self.state = State.processing
             item = self.__lookup[scan]
