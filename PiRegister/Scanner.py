@@ -16,7 +16,7 @@ class Scanner(object):
             for c in buffer:
                 if (c > 0):
                     inStr = inStr + str(c - 29)            
-            
+                print(c)
         self.__input = inStr
         return self.__input
     def __streamEmpty(self):
