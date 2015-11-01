@@ -5,7 +5,7 @@
 
 class Scanner(object):
     def __init__(self):
-        self.__file = open('/dev/hidraw0','rb')
+        self.__file = open('/dev/hidraw0','r')
         self.__input = "-1"
     def getInputNum(self):
         self.__input = "-1"
