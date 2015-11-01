@@ -59,7 +59,7 @@ class CashRegister(object):
                 self.__print_items()
                 self.__cleanup()
     def __read_button(self):
-        if self.__io.getButton() == 1:
+        if self.__io.getButton():
             if self.state == State.waiting:
                 self.state = State.scanning
             elif self.state == State.scanning or self.state == State.processing:
