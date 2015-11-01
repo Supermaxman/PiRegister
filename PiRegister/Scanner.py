@@ -12,12 +12,22 @@ class Scanner(object):
     def getInput(self):
         self.__input = ""
         inStr = ""
-
+        shift = False
         while not self.__streamEmpty():
             buffer = os.read(self.__file.fileno(), 8)
             for c in buffer:
-                if (c > 0):
-                    inStr = inStr + hid[c]        
+                if ord(c) > 0:
+                    if shift: 
+                        if int(ord(c)) == 2 :
+                            shift = True
+                        else:
+                            inStr += hid2[ int(ord(c)) ]
+                            shift = False       
+                    else:
+                        if int(ord(c)) == 2 :
+                            shift = True
+                        else:
+                            inStr += hid[ int(ord(c)) ] 
         self.__input = inStr
         return self.__input
     def __streamEmpty(self):
