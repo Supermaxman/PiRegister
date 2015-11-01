@@ -73,12 +73,7 @@ class CashRegister(object):
         #write object interface if required for scanner use
 
         while self.state == State.scanning:
-            scanChar = self.__io.getScan()
-            scanStr = ""
-            while scanChar != "-1":
-                scanStr += scanChar
-                scanChar = self.__io.getScan()
-            
+            scanStr = self.__io.getScan()
             if scanStr != "":
                 self.state = State.processing
                 #item = self.__lookup[scan]
