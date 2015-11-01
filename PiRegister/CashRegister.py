@@ -31,6 +31,7 @@ class CashRegister(object):
     @state.setter
     def state(self, value):
         self.__state = value
+        print(value)
         self.__io.setLight(self.__state)
     def __load_items(self, filename):
         self.state = State.loading
@@ -53,36 +54,34 @@ class CashRegister(object):
         while True: #loop for lifecycle, break when system shuts down or at other time when decided
             self.__read_button()
             if self.state == State.scanning:
-                self.__scan_item()
+                self.__scan_items()
             elif self.state == State.completed:
                 self.__print_items()
                 self.__cleanup()
     def __read_button(self):
-        if self.__get_button_state() == 1:
+        if self.__io.getButton() == 1:
             if self.state == State.waiting:
                 self.state = State.scanning
             elif self.state == State.scanning or self.state == State.processing:
                 self.state = State.completed
-    def __get_button_state(self):
-        #do all the stuff required to get button input and turn it into 1 or 0, true or false
-        return self.__io.getButton()
-    def __scan_item(self):
+    def __scan_items(self):
         #write code based on how the scanner works
         #read from scanner, if value is not default value then go to State.processing
         #process id number from scanner, add to item list
         #process id number from scanner, add to item list
         #go to State.scanning when completed
         #write object interface if required for scanner use
-        
-        scan = self.__io.getScan()
-        while scan == 0:
+
+        while self.state == State.scanning:
             scan = self.__io.getScan()
-            #TODO NEXT PART HERE, NEED TO CHECK BUTTON EVERY LOOP
-        if scan != 0:
-            self.state = State.processing
-            item = self.__lookup[scan]
-            self.__add_item(item)
-            self.state = State.scanning
+            if scan != -1:
+                self.state = State.processing
+                #item = self.__lookup[scan]
+                print(scan)
+                #self.__add_item(item)
+                self.state = State.scanning
+            self.__read_button()
+
     def __add_item(self, item):
         tmp_items = self.items[:]
         for idx, itm in enumerate(self.items[:]):

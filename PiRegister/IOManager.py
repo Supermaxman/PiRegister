@@ -7,8 +7,8 @@ class IOManager(object):
         return
     def getButton(self):
         #TODO: change this to actually work with the pi's button IO
-        input = 0
-        if input == 1:
+        inpt = int(input("Button: "))
+        if inpt == 1:
             return 1
         return 0
     def getScan(self):

@@ -1,4 +1,4 @@
-import os, sys, select
+﻿import os, sys, select
 
 
 
@@ -6,21 +6,19 @@ import os, sys, select
 class Scanner(object):
     def __init__(self):
         self.__file = open('/dev/hidraw0','rb')
-        self.input = ""
-    def getInput(self):
-        self.input = ""
+        self.__input = "-1"
+    def getInputNum(self):
+        self.__input = "-1"
         loop = True
-        inStr = ""
+        inStr = "-1"
         if not self.__streamEmpty():
             buffer = os.read(self.__file.fileno(), 8)
-            for c in buffer:
-                if c > 0:
-                    num = c - 29;
-                    inStr += str(num)
+            if (int(buffer) > 0):
+                inStr = buffer[1:]
             if self.__streamEmpty:
                 loop = False
-        self.input = inStr
-        return int(self.input)
+        self.__input = inStr
+        return int(self.__input)
     def __streamEmpty():
         r, w, e = select.select([ self.__file ], [], [], 1)
         val = False;
