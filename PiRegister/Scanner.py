@@ -19,7 +19,7 @@ class Scanner(object):
                 loop = False
         self.__input = inStr
         return int(self.__input)
-    def __streamEmpty():
+    def __streamEmpty(self):
         r, w, e = select.select([ self.__file ], [], [], 1)
         val = False;
         if (self.__file not in r):
