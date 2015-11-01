@@ -8,11 +8,7 @@ class UsageException(Exception):
 def main(argv = None):
     if argv is None:
         argv = sys.argv
-    try:
-        register = CashRegister("Items.txt")
-    except:
-        print("Unknown error: ", sys.exc_info()[0])
-        return 2
+    register = CashRegister("Items.txt")
     return 0
 if __name__ == "__main__":
     sys.exit(main())
