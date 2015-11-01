@@ -10,12 +10,10 @@ class Button(object):
         #Just for development, needs to change for real button
     def getButtonBool(self):
         self.__input = False
-        inStr = "0"
         self.__file = open('/home/pi/Desktop/button.txt','r')
         if not self.__streamEmpty():
             buffer = self.__file.readline()
-            inStr = buffer
-        if int(inStr) == 1:
+        if int(buffer) == 1:
             self.__input = True
         else:
             self.__input = False
