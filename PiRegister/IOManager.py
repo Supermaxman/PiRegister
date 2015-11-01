@@ -12,7 +12,7 @@ class IOManager(object):
         return 0
     def getScan(self):
         #TODO: change this to actually work with the scanner
-        return self.scanner.getInput()
+        return self.scanner.getInputNum()
     def setLight(self, value):
         #TODO implement changing of light to set values
         return 0
