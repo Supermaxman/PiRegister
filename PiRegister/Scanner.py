@@ -16,18 +16,18 @@ class Scanner(object):
         while not self.__streamEmpty():
             buffer = os.read(self.__file.fileno(), 8)
             for c in buffer:
-                if ord(c) > 0:
+                if c > 0:
                     if shift: 
-                        if int(ord(c)) == 2 :
+                        if c == 2 :
                             shift = True
                         else:
-                            inStr += hid2[ int(ord(c)) ]
+                            inStr += hid2[c]
                             shift = False       
                     else:
-                        if int(ord(c)) == 2 :
+                        if c == 2 :
                             shift = True
                         else:
-                            inStr += hid[ int(ord(c)) ] 
+                            inStr += hid[c] 
         self.__input = inStr
         return self.__input
     def __streamEmpty(self):
