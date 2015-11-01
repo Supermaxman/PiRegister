@@ -4,7 +4,6 @@ class IOManager(object):
     def __init__(self):
         self.scanner = Scanner()
         #set up connections and variables for button, light, printer, and scanner
-        return
     def getButton(self):
         #TODO: change this to actually work with the pi's button IO
         inpt = int(input("Button: "))
@@ -16,5 +15,5 @@ class IOManager(object):
         return self.scanner.getInput()
     def setLight(self, value):
         #TODO implement changing of light to set values
-        return
+        return 0
     #def printItems(ItemReceipt
