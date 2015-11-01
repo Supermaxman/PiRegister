@@ -3,7 +3,7 @@ import os, sys, select
 
 class Button(object):
     def __init__(self):
-        self.__file = open('/home/pi/Desktop/button.txt','rb')
+        self.__file = open('/home/pi/Desktop/button.txt','r')
         self.__input = False
         self.__previous = False
         self.__result = False
@@ -11,8 +11,9 @@ class Button(object):
     def getButtonBool(self):
         self.__input = False
         inStr = "0"
+        self.__file = open('/home/pi/Desktop/button.txt','r')
         if not self.__streamEmpty():
-            buffer = os.read(self.__file.fileno(), 8)
+            buffer = self.__file.readline()
             inStr = buffer
         if int(inStr) == 1:
             self.__input = True
