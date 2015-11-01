@@ -11,6 +11,7 @@ class Button(object):
     def getButtonBool(self):
         self.__input = False
         self.__file = open('/home/pi/Desktop/button.txt','r')
+        buffer = "0"
         if not self.__streamEmpty():
             buffer = self.__file.readline()
         if int(buffer) == 1:
