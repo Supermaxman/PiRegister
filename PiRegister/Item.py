@@ -27,5 +27,3 @@ class Item(object):
    
     def __str__(self):
         return "{0}:{1}:{2}:{3}".format(self.id, self.name, self.price)
-    def __add__(self, other):
-        return Item(self.id, self.name, self.price)

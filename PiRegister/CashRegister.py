@@ -36,7 +36,7 @@ class CashRegister(object):
     def state(self, value):
         self.__state = value
         print(value)
-        self.__io.blinkLight()
+        self.__io.blinkLight()#TODO CHANGE THIS TO ONLY WHEN WE WANT
 
     def __load_items(self, filename):
         self.state = State.loading

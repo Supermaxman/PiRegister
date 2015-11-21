@@ -28,7 +28,7 @@ class Printer(object):
             for i in range(pricelen, (maxprice + 1)):
                 line += " "
         line += (price + "\n")
-        self.__printer.text(line + "\n")
+        self.__printer.text(line)
     def printTotals(self, items):
         #https://gist.github.com/jackiekazil/6201722
         tax = Decimal(0.0825)
@@ -55,7 +55,7 @@ class Printer(object):
         maxCurrency = 6
 
         self.__printer.set("LEFT", "A", "B", 1, 1)
-        line = "Subtotal                   "
+        line = "\nSubtotal                   "
         if subLen < (maxCurrency):
             for i in range(subLen, (maxCurrency + 1)):
                 line += " "
