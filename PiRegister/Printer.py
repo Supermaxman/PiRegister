@@ -1,7 +1,6 @@
 ﻿import os, sys, select
 from escpos import * 
 from Item import *
-from Decimal import *
 #https://github.com/manpaz/python-escpos/wiki/Methods
 class Printer(object):
     def __init__(self):
