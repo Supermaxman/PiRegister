@@ -30,7 +30,7 @@ class IOManager(object):
         self.__led.blink()
 
     def printReceipt(self, items):
-        if items.count > 0:
+        if items:
             self.__printer.printHeader()
             for item in items:
                 self.__printer.printItem(item)
