@@ -53,19 +53,19 @@ class Printer(object):
         maxCurrency = 6
 
         self.__printer.set("LEFT", "A", "B", 1, 1)
-        line = "Subtotal                  "
+        line = "Subtotal                   "
         if subLen < (maxCurrency):
             for i in range(subLen, (maxCurrency + 1)):
                 line += " "
         line += (subStr + "\n")
 
-        line += "  Tax                     "
+        line += "  Tax                      "
         if taxLen < (maxCurrency):
             for i in range(taxLen, (maxCurrency + 1)):
                 line += " "
         line += (taxStr + "\n")
 
-        line += "Total                     "
+        line += "Total                      "
         if totalLen < (maxCurrency):
             for i in range(totalLen, (maxCurrency + 1)):
                 line += " "
