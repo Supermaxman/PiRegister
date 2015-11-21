@@ -9,7 +9,7 @@ class IOManager(object):
     def __init__(self):
         led = 11
         button = 13
-        GPIO.setmode(GPIO.Board)
+        GPIO.setmode(GPIO.BOARD)
         GPIO.setup(led, GPIO.OUT)
 
         self.__scanner = Scanner()
