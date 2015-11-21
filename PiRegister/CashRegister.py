@@ -18,22 +18,26 @@ class CashRegister(object):
     def __init__(self, filename):
         self.__io = IOManager()
         self.__load_items(filename)
-        self.__take_input()#change to public function
+        self.__take_input()
+
     @property
     def items(self):
         return self.__items
+
     @items.setter
     def items(self, value):
         self.__items = value
+
     @property
     def state(self):
         return self.__state
+
     @state.setter
     def state(self, value):
         self.__state = value
         print(value)
-        #self.__io.setLight(self.__state)
         self.__io.blinkLight()
+
     def __load_items(self, filename):
         self.state = State.loading
         
@@ -44,11 +48,12 @@ class CashRegister(object):
             for line in itemFile:
                 item = self.__parse(line)
                 self.__lookup[item.id] = item
-
         self.state = State.waiting
+
     def __parse(self, line):
         strs = line.split(',')
         return Item(strs[0], strs[1], strs[2])
+
     def __take_input(self):
         self.state = State.waiting
         self.items = []
@@ -59,20 +64,15 @@ class CashRegister(object):
             elif self.state == State.completed:
                 self.__print_items()
                 self.__cleanup()
+
     def __read_button(self):
         if self.__io.getButton():
             if self.state == State.waiting:
                 self.state = State.scanning
             elif self.state == State.scanning or self.state == State.processing:
                 self.state = State.completed
-    def __scan_items(self):
-        #write code based on how the scanner works
-        #read from scanner, if value is not default value then go to State.processing
-        #process id number from scanner, add to item list
-        #process id number from scanner, add to item list
-        #go to State.scanning when completed
-        #write object interface if required for scanner use
 
+    def __scan_items(self):
         while self.state == State.scanning:
             scanStr = self.__io.getScan()
             if scanStr != "":
