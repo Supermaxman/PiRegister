@@ -29,8 +29,9 @@ class IOManager(object):
     def blinkLight(self):
         self.__led.blink()
 
-    def printItem(self, item):
-        self.__printer.printItem(item)
-
-    def printComplete(self):
+    def printReceipt(self, items):
+        self.__printer.printHeader()
+        for item in items:
+            self.__printer.printItem(item)
+        self.__printer.printTotals(items)
         self.__printer.complete()

@@ -86,16 +86,8 @@ class CashRegister(object):
     def __add_item(self, item):
         self.items.append(item)
     def __print_items(self):
-        #write code based on how the printer works
-        #go to State.printing
-        #print item list along with total values
-        #go to State.waiting
-        #write object interface if required for printer use
-        #self.__io.printItems()
         self.state = State.printing
-        for item in self.items:
-            self.__io.printItem(item)
-        self.__io.printComplete()
+        self.__io.printReceipt(self.items)
         self.state = State.waiting
     def __cleanup(self):
         self.items.clear()
