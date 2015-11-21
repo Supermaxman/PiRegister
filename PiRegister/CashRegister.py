@@ -77,18 +77,13 @@ class CashRegister(object):
             scanStr = self.__io.getScan()
             if scanStr != "":
                 self.state = State.processing
-                #item = self.__lookup[scan]
-                print(scanStr)
-                #self.__add_item(item)
+                item = self.__lookup[int(scanStr)]
+                print(item.id)
+                self.__add_item(item)
                 self.state = State.scanning
             self.__read_button()
 
     def __add_item(self, item):
-        tmp_items = self.items[:]
-        for idx, itm in enumerate(self.items[:]):
-            if itm.id == item.id:
-                self.items[idx] = itm + item
-                return
         self.items.append(item)
     def __print_items(self):
         #write code based on how the printer works

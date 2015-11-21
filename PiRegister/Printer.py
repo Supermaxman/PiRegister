@@ -23,9 +23,6 @@ class Printer(object):
                 line += " "
         line += price
         print(line)
-        print(name)
-        print(price)
         self.__printer.text(line)
-        self.__printer.text("Test")
     def complete(self):
         self.__printer.cut()
