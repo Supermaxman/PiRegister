@@ -23,6 +23,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Button.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="CashRegister.py">
       <SubType>Code</SubType>
     </Compile>
@@ -34,6 +37,9 @@
     </Compile>
     <Compile Include="PiRegister.py" />
     <Compile Include="Practice.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Printer.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Scanner.py">

@@ -32,7 +32,8 @@ class CashRegister(object):
     def state(self, value):
         self.__state = value
         print(value)
-        self.__io.setLight(self.__state)
+        #self.__io.setLight(self.__state)
+        self.__io.blinkLight()
     def __load_items(self, filename):
         self.state = State.loading
         
@@ -47,7 +48,7 @@ class CashRegister(object):
         self.state = State.waiting
     def __parse(self, line):
         strs = line.split(',')
-        return Item(strs[0], strs[1], strs[2], strs[3])
+        return Item(strs[0], strs[1], strs[2])
     def __take_input(self):
         self.state = State.waiting
         self.items = []
@@ -98,7 +99,8 @@ class CashRegister(object):
         #self.__io.printItems()
         self.state = State.printing
         for item in self.items:
-            print(item)
+            self.__io.printItem(item)
+        self.__io.printComplete()
         self.state = State.waiting
     def __cleanup(self):
         self.items.clear()

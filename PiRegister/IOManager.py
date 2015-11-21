@@ -1,18 +1,34 @@
 ﻿from Scanner import *
 from Button import *
+from LED import *
+from Printer import *
+from time import sleep
+import RPi.GPIO as GPIO
 
 class IOManager(object):
     def __init__(self):
-        self.scanner = Scanner()
-        self.button = Button()
+        led = 11
+        button = 13
+        GPIO.setmode(GPIO.Board)
+        GPIO.setup(led, GPIO.OUT)
+
+        self.__scanner = Scanner()
+        self.__button = Button(button)
+        self.__led = LED(led)
+        self.__printer = Printer()
         #set up connections and variables for button, light, printer, and scanner
     def getButton(self):
-        #TODO: change this to actually work with the pi's button IO
-        return self.button.getButtonBool()
+        return self.__button.getButtonBool()
+
     def getScan(self):
-        #TODO: change this to actually work with the scanner
-        return self.scanner.getInput()
+        return self.__scanner.getInput()
+
     def setLight(self, value):
-        #TODO implement changing of light to set values
-        return 0
-    #def printItems(ItemReceipt
+        self.__led.setValue(value)
+    def blinkLight(self):
+        self.__led.blink()
+
+    def printItem(self, item):
+        self.__printer.printItem(item)
+    def printComplete(self):
+        self.__printer.complete()
