@@ -37,7 +37,7 @@ class Printer(object):
 
         subtotal = Decimal(sub)
         
-        taxtotal = Decimal(subtotal * tax)
+        taxtotal = Decimal(sub * tax)
 
         total = Decimal(subtotal + taxtotal)
         
