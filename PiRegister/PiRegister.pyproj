@@ -23,6 +23,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="LED.py" />
     <Compile Include="Button.py">
       <SubType>Code</SubType>
     </Compile>

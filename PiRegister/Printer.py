@@ -28,7 +28,7 @@ class Printer(object):
             for i in range(pricelen, (maxprice + 1)):
                 line += " "
         line += (price + "\n")
-        self.__printer.text(line)
+        self.__printer.text(line + "\n")
     def printTotals(self, items):
         #https://gist.github.com/jackiekazil/6201722
         tax = Decimal(0.0825)
