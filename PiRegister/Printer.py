@@ -1,6 +1,7 @@
 ﻿import os, sys, select
 from escpos import * 
 from Item import *
+from decimal import *
 #https://github.com/manpaz/python-escpos/wiki/Methods
 class Printer(object):
     def __init__(self):
@@ -29,18 +30,18 @@ class Printer(object):
         line += (price + "\n")
         self.__printer.text(line)
     def printTotals(self, items):
-        tax = 0.0825
-        sub = 0
+               
+        getcontext().prec = 3
+
+        tax = Decimal(0.0825)
+        sub = Decimal(0)
 
         for item in items:
-            sub += item.price
+            sub = sub + item.price
 
-        subtotal = Decimal(sub)
-        subtotal._round()
-        taxtotal = Decimal(float(str(sub)) * tax)
-        taxtotal._round()
-        total = Decimal(subtotal + taxtotal)
-        total._round()
+        subtotal = sub
+        taxtotal = sub * tax
+        total = subtotal + taxtotal
 
         subStr = str(subtotal)
         subLen = len(subStr)
