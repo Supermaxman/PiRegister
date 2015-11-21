@@ -28,7 +28,7 @@ class IOManager(object):
 
     def blinkLight(self):
         self.__led.blink()
-
+        
     def printReceipt(self, items):
         if items:
             self.__printer.printHeader()
