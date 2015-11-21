@@ -4,9 +4,6 @@ from escpos import *
 class Printer(object):
     def __init__(self):
         self.__printer = printer.Usb(0x04b8,0x0202)
-    def print(self, line):
-        self.__printer.text(line)
-
 
     def printItem(self, item):
         line = item.name
@@ -24,6 +21,6 @@ class Printer(object):
             for i in range(pricelen, (maxprice + 1)):
                 line += " "
         line += price
-
+        self.__printer.text(line)
     def complete(self):
         self.__printer.cut()

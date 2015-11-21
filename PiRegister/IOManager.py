@@ -25,10 +25,12 @@ class IOManager(object):
 
     def setLight(self, value):
         self.__led.setValue(value)
+
     def blinkLight(self):
         self.__led.blink()
 
     def printItem(self, item):
         self.__printer.printItem(item)
+
     def printComplete(self):
         self.__printer.complete()
