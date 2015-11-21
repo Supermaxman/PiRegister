@@ -36,11 +36,12 @@ class Printer(object):
             sub += item.price
 
         subtotal = Decimal(sub)
-        
+        subtotal._round()
         taxtotal = Decimal(float(str(sub)) * tax)
-
+        taxtotal._round()
         total = Decimal(subtotal + taxtotal)
-        
+        total._round()
+
         subStr = str(subtotal)
         subLen = len(subStr)
         taxStr = str(taxtotal)
