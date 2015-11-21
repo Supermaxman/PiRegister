@@ -30,9 +30,7 @@ class Printer(object):
         line += (price + "\n")
         self.__printer.text(line)
     def printTotals(self, items):
-               
-        getcontext().prec = 3
-
+        #https://gist.github.com/jackiekazil/6201722
         tax = Decimal(0.0825)
         sub = Decimal(0)
 
@@ -42,6 +40,10 @@ class Printer(object):
         subtotal = sub
         taxtotal = sub * tax
         total = subtotal + taxtotal
+
+        subtotal = round(subtotal, 2)
+        taxtotal = round(taxtotal, 2)
+        total = round(total, 2)
 
         subStr = str(subtotal)
         subLen = len(subStr)
